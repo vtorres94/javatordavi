@@ -1,4 +1,5 @@
 package controller;
+import com.mysql.jdbc.exceptions.MySQLIntegrityConstraintViolationException;
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -10,7 +11,8 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author vladi
+ * @author Vladimir Torres 
+ * @version 0.1
  */
 public class ConexionDB {
     public static Connection cnx;
@@ -66,9 +68,12 @@ public class ConexionDB {
            stm = cnx.createStatement();
            stm.execute(sql);
            result = true;
-       } catch (SQLException ex) {
+       } catch(MySQLIntegrityConstraintViolationException msie){
+           System.out.println("USUARIO REPETIDO");
+           java.util.logging.Logger.getLogger(ConexionDB.class.getName()).log(java.util.logging.Level.SEVERE, null, msie);
+       }catch (SQLException ex) {
            java.util.logging.Logger.getLogger(ConexionDB.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-       }
+       } 
        return result;
    }
    public ResultSet ejecutarConsulta(String sql){

@@ -8,7 +8,8 @@ import javax.swing.JOptionPane;
 import view.VentanaAdministradorTordavi;
 /**
  *
- * @author Vladimir Torres>
+ * @author Vladimir Torres 
+ * @version 0.1
  */
 public class VentanaTransportesAdministrador extends javax.swing.JFrame {
           Transportes transportes;
@@ -308,6 +309,9 @@ public class VentanaTransportesAdministrador extends javax.swing.JFrame {
         panelOtros.setBackground(new java.awt.Color(255, 255, 255));
         panelOtros.setPreferredSize(new java.awt.Dimension(250, 150));
         panelOtros.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                panelOtrosMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 panelOtrosMouseEntered(evt);
             }
@@ -541,6 +545,13 @@ public class VentanaTransportesAdministrador extends javax.swing.JFrame {
         v.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_panelMisionerosMouseClicked
+
+    private void panelOtrosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelOtrosMouseClicked
+        // TODO add your handling code here:
+        VentanaTransporte v = new VentanaTransporte();
+        v.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_panelOtrosMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

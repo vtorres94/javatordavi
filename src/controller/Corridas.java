@@ -13,7 +13,8 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author vladi
+ * @author Vladimir Torres 
+ * @version 0.1
  */
 public class Corridas {
     static ConexionDB conexion = new ConexionDB();

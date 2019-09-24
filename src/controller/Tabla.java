@@ -11,7 +11,8 @@ import javax.swing.table.AbstractTableModel;
 
 /**
  *
- * @author vladi
+ * @author Vladimir Torres 
+ * @version 0.1
  */
 public class Tabla extends DefaultTableModel{
     private int rowCount;

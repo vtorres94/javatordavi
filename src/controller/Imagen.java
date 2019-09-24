@@ -7,7 +7,8 @@ package controller;
  */
 /**
  *
- * @author Vladimir Torres
+ * @author Vladimir Torres 
+ * @version 0.1
  */
 import java.awt.Graphics;
 import java.awt.Image;

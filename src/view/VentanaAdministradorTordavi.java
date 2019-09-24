@@ -15,7 +15,8 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author vladi
+ * @author Vladimir Torres 
+ * @version 0.1
  */
 public class VentanaAdministradorTordavi extends javax.swing.JFrame {
 

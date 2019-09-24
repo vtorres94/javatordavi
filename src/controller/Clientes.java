@@ -16,7 +16,8 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author vladi
+ * @author Vladimir Torres 
+ * @version 0.1
  */
 public class Clientes {
     public static ArrayList<String[]> clientesDB = new ArrayList();

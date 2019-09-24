@@ -7,7 +7,8 @@ package view;
 
 /**
  *
- * @author vladi
+ * @author Vladimir Torres 
+ * @version 0.1
  */
 public class VentanaPruebas extends javax.swing.JFrame {
 

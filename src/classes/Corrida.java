@@ -9,7 +9,8 @@ import java.sql.Time;
 
 /**
  *
- * @author vladi
+ * @author @author Vladimir Torres 
+ * @version 0.1
  */
 public class Corrida {
     private int idCorrida;

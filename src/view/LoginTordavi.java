@@ -12,7 +12,8 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author Vladimir Torres
+ * @author Vladimir Torres 
+ * @version 0.1
  */
 public class LoginTordavi extends javax.swing.JFrame {
           /**

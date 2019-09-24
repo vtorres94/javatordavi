@@ -6,7 +6,8 @@
 package classes;
 /**
  *
- * @author vladi
+ * @author Vladimir Torres 
+ * @version 0.1
  */
 public class Transporte {
     private int idTransporte;

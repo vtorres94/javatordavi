@@ -18,7 +18,8 @@ import view.VentanaAdministradorTordavi;
 
 /**
  *
- * @author vladi
+ * @author Vladimir Torres 
+ * @version 0.1
  */
 public class VentanaCorridasAdministrador extends javax.swing.JFrame {
 

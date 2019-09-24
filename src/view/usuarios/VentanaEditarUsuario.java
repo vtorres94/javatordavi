@@ -16,7 +16,8 @@ import view.VentanaAdministradorTordavi;
 
 /**
  *
- * @author vladi
+ * @author Vladimir Torres 
+ * @version 0.1
  */
 public class VentanaEditarUsuario extends javax.swing.JFrame {
 
@@ -370,7 +371,7 @@ public class VentanaEditarUsuario extends javax.swing.JFrame {
                             txtUsuario.setBorder(null);
                             if (!txtPassword.getText().equals("")) {
                                 txtPassword.setBorder(null);
-                                if (!users.validarUsuario(txtUsuario.getText())) {
+                                if (!users.validarUsuario(txtUsuario.getText()) || txtUsuario.getText().equals(user.getUsuario())) {
                                     txtUsuario.setBorder(null);
                                     Usuario u = new Usuario(idUsuario,txtNombre.getText(),
                                             txtSegundoNombre.getText(),
@@ -431,7 +432,7 @@ public class VentanaEditarUsuario extends javax.swing.JFrame {
     private void lblCloseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCloseMouseClicked
         // TODO add your handling code here:
         int dialog = JOptionPane.YES_NO_CANCEL_OPTION;
-        int result = JOptionPane.showConfirmDialog(null, "Desea salir?", "Exit", dialog);
+        int result = JOptionPane.showConfirmDialog(null, "Desea salir?, NO se guardarán los cambios", "Exit", dialog);
         if (result == 0) {
             VentanaUsuariosAdministrador vua = new VentanaUsuariosAdministrador();
             vua.setVisible(rootPaneCheckingEnabled);
