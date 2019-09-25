@@ -16,9 +16,11 @@ import java.util.logging.Logger;
  * @author Vladimir Torres 
  * @version 0.1
  */
+
 public class Corridas {
     static ConexionDB conexion = new ConexionDB();
     public static ArrayList<String[]> corridasDB = new ArrayList<>();
+    private Transportes t;
     public Corridas(){
         actualizarCorridas();
     }
@@ -42,13 +44,13 @@ public class Corridas {
         ArrayList<Corrida> corridas = null;
         return corridas;
     }
-    public static void actualizarCorridas(){
+    public void actualizarCorridas(){
         try {
             conexion.ejecutarConsulta("SELECT * FROM corridas");
             while(conexion.rs.next()){
                 String[] c = new String[]{
                     String.valueOf(conexion.rs.getInt("idCorrida")),
-                    Transportes.getNombreTransporte(conexion.rs.getInt("idTransporte")),
+                    t.getTransporteByID(conexion.rs.getInt("idTransporte")),//Tal vez exista error ya que no hemos inicializado la variable t
                     conexion.rs.getString("fechaSalida"),
                     conexion.rs.getString("origen"),
                     conexion.rs.getString("destino"),

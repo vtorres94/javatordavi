@@ -24,6 +24,11 @@ public class Transporte {
         this.telefono = telefono;
         this.direccion = direccion;
     }
+    public Transporte(String nombreTransporte,String telefono, String direccion){
+        this.nombre = nombreTransporte;
+        this.telefono = telefono;
+        this.direccion = direccion;
+    }
 
     /**
      * @return the idTransporte

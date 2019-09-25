@@ -6,32 +6,35 @@ import java.awt.Color;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 import view.VentanaAdministradorTordavi;
+
 /**
  *
- * @author Vladimir Torres 
+ * @author Vladimir Torres
  * @version 0.1
  */
 public class VentanaTransportesAdministrador extends javax.swing.JFrame {
-          Transportes transportes;
-          /**
-           * Creates new form VentanaTransportesAdministrador
-           */
-          public VentanaTransportesAdministrador() {
-                    initComponents();
-                    this.setLocationRelativeTo(null);
-                    transportes = new Transportes();
-                    Imagen m = new Imagen(labelLogo,"src/images/logoTordavi.png");
-                    Imagen close = new Imagen(lblClose,"src/images/icons/iconClose.png");
-                    Imagen min = new Imagen(lblMinimizar,"src/images/icons/iconMinimizar.png");
-                    Imagen guadiana = new Imagen(lblGuadiana, "src/images/transportLines/guadianaLogo.png");
-                    Imagen santiago = new Imagen(lblSantiago,"src/images/transportLines/SantiagoLogo.png");
-                    Imagen tornado = new Imagen(lblTornado, "src/images/transportLines/tornadoLogo.png");
-                    Imagen zacatecano = new Imagen(lblZacatecano,"src/images/transportLines/zacatecanoLogo.PNG");
-                    Imagen misioneros = new Imagen(lblMisioneros,"src/images/transportLines/misionerosLogo.jpg");
-                    Imagen back = new Imagen(lblRegresar, "src/images/icons/iconRegresar.png");
-          }
-          
-          @SuppressWarnings("unchecked")
+
+    Transportes transportes;
+
+    /**
+     * Creates new form VentanaTransportesAdministrador
+     */
+    public VentanaTransportesAdministrador() {
+        initComponents();
+        this.setLocationRelativeTo(null);
+        transportes = new Transportes();
+        Imagen m = new Imagen(labelLogo, "src/images/logoTordavi.png");
+        Imagen close = new Imagen(lblClose, "src/images/icons/iconClose.png");
+        Imagen min = new Imagen(lblMinimizar, "src/images/icons/iconMinimizar.png");
+        Imagen guadiana = new Imagen(lblGuadiana, "src/images/transportLines/guadianaLogo.png");
+        Imagen santiago = new Imagen(lblSantiago, "src/images/transportLines/SantiagoLogo.png");
+        Imagen tornado = new Imagen(lblTornado, "src/images/transportLines/tornadoLogo.png");
+        Imagen zacatecano = new Imagen(lblZacatecano, "src/images/transportLines/zacatecanoLogo.PNG");
+        Imagen misioneros = new Imagen(lblMisioneros, "src/images/transportLines/misionerosLogo.jpg");
+        Imagen back = new Imagen(lblRegresar, "src/images/icons/iconRegresar.png");
+    }
+
+    @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -348,9 +351,17 @@ public class VentanaTransportesAdministrador extends javax.swing.JFrame {
                 .addContainerGap(29, Short.MAX_VALUE))
         );
 
+        lblRegresar.setMaximumSize(new java.awt.Dimension(46, 46));
+        lblRegresar.setMinimumSize(new java.awt.Dimension(46, 46));
         lblRegresar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblRegresarMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lblRegresarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblRegresarMouseExited(evt);
             }
         });
 
@@ -358,13 +369,6 @@ public class VentanaTransportesAdministrador extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(44, 44, 44)
-                .addComponent(labelLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblMinimizar, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblClose, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(128, 128, 128)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -382,9 +386,17 @@ public class VentanaTransportesAdministrador extends javax.swing.JFrame {
                         .addComponent(panelOtros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 136, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(44, 44, 44)
+                        .addComponent(labelLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblMinimizar, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblClose, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -405,116 +417,116 @@ public class VentanaTransportesAdministrador extends javax.swing.JFrame {
                             .addComponent(panelMisioneros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(panelOtros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(panelTornado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
-                .addComponent(lblRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1050, 570));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
           private void lblCloseMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCloseMouseMoved
-                    // TODO add your handling code here:
+              // TODO add your handling code here:
           }//GEN-LAST:event_lblCloseMouseMoved
 
           private void lblCloseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCloseMouseClicked
-                    // TODO add your handling code here:
-                    int dialog = JOptionPane.YES_NO_CANCEL_OPTION;
-                    int result = JOptionPane.showConfirmDialog(null, "Desea salir?","Exit",dialog);
-                    if(result==0){
-                              System.exit(0);
-                    }
+              // TODO add your handling code here:
+              int dialog = JOptionPane.YES_NO_CANCEL_OPTION;
+              int result = JOptionPane.showConfirmDialog(null, "Desea salir?", "Exit", dialog);
+              if (result == 0) {
+                  System.exit(0);
+              }
           }//GEN-LAST:event_lblCloseMouseClicked
 
           private void lblCloseMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCloseMouseExited
-                    // TODO add your handling code here:
+              // TODO add your handling code here:
           }//GEN-LAST:event_lblCloseMouseExited
 
           private void lblMinimizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMinimizarMouseClicked
-                    // TODO add your handling code here:
-                    this.setState(VentanaAdministradorTordavi.ICONIFIED);
+              // TODO add your handling code here:
+              this.setState(VentanaAdministradorTordavi.ICONIFIED);
           }//GEN-LAST:event_lblMinimizarMouseClicked
 
           private void panelGuadianaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelGuadianaMouseClicked
-                    // TODO add your handling code here:
-                    VentanaTransporte v = new VentanaTransporte(transportes.verTransporte("Guadiana Express"));
-                    v.setVisible(true);
-                    this.dispose();
+              // TODO add your handling code here:
+              VentanaTransporte v = new VentanaTransporte(transportes.verTransporte("Guadiana Express"));
+              v.setVisible(true);
+              this.dispose();
           }//GEN-LAST:event_panelGuadianaMouseClicked
 
           private void panelGuadianaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelGuadianaMouseEntered
-                    // TODO add your handling code here:
-                    panelGuadiana.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+              // TODO add your handling code here:
+              panelGuadiana.setBorder(BorderFactory.createLineBorder(Color.BLACK));
           }//GEN-LAST:event_panelGuadianaMouseEntered
 
           private void panelGuadianaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelGuadianaMouseExited
-                    // TODO add your handling code here:
-                    panelGuadiana.setBorder(null);
+              // TODO add your handling code here:
+              panelGuadiana.setBorder(null);
           }//GEN-LAST:event_panelGuadianaMouseExited
 
           private void panelSantiagoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelSantiagoMouseEntered
-                    // TODO add your handling code here:
-                    panelSantiago.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+              // TODO add your handling code here:
+              panelSantiago.setBorder(BorderFactory.createLineBorder(Color.BLACK));
           }//GEN-LAST:event_panelSantiagoMouseEntered
 
           private void panelSantiagoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelSantiagoMouseExited
-                    // TODO add your handling code here:
-                    panelSantiago.setBorder(null);
+              // TODO add your handling code here:
+              panelSantiago.setBorder(null);
           }//GEN-LAST:event_panelSantiagoMouseExited
 
           private void panelZacatecanoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelZacatecanoMouseEntered
-                    // TODO add your handling code here:
-                    panelZacatecano.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+              // TODO add your handling code here:
+              panelZacatecano.setBorder(BorderFactory.createLineBorder(Color.BLACK));
           }//GEN-LAST:event_panelZacatecanoMouseEntered
 
           private void panelZacatecanoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelZacatecanoMouseExited
-                    // TODO add your handling code here:
-                    panelZacatecano.setBorder(null);
+              // TODO add your handling code here:
+              panelZacatecano.setBorder(null);
           }//GEN-LAST:event_panelZacatecanoMouseExited
 
           private void panelTornadoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelTornadoMouseEntered
-                    // TODO add your handling code here:
-                    panelTornado.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+              // TODO add your handling code here:
+              panelTornado.setBorder(BorderFactory.createLineBorder(Color.BLACK));
           }//GEN-LAST:event_panelTornadoMouseEntered
 
           private void panelTornadoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelTornadoMouseExited
-                    // TODO add your handling code here:
-                    panelTornado.setBorder(null);
+              // TODO add your handling code here:
+              panelTornado.setBorder(null);
           }//GEN-LAST:event_panelTornadoMouseExited
 
           private void panelMisionerosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelMisionerosMouseEntered
-                    // TODO add your handling code here:
-                    panelMisioneros.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+              // TODO add your handling code here:
+              panelMisioneros.setBorder(BorderFactory.createLineBorder(Color.BLACK));
           }//GEN-LAST:event_panelMisionerosMouseEntered
 
           private void panelMisionerosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelMisionerosMouseExited
-                    // TODO add your handling code here:
-                    panelMisioneros.setBorder(null);
+              // TODO add your handling code here:
+              panelMisioneros.setBorder(null);
           }//GEN-LAST:event_panelMisionerosMouseExited
 
           private void panelOtrosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelOtrosMouseEntered
-                    // TODO add your handling code here:
-                    panelOtros.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+              // TODO add your handling code here:
+              panelOtros.setBorder(BorderFactory.createLineBorder(Color.BLACK));
           }//GEN-LAST:event_panelOtrosMouseEntered
 
           private void panelOtrosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelOtrosMouseExited
-                    // TODO add your handling code here:
-                    panelOtros.setBorder(null);
+              // TODO add your handling code here:
+              panelOtros.setBorder(null);
           }//GEN-LAST:event_panelOtrosMouseExited
 
           private void lblCloseMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCloseMouseEntered
-                    // TODO add your handling code here:
-                    lblClose.setBorder(BorderFactory.createLineBorder(Color.red));
+              // TODO add your handling code here:
+              lblClose.setBorder(BorderFactory.createLineBorder(Color.red));
           }//GEN-LAST:event_lblCloseMouseEntered
 
           private void lblRegresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblRegresarMouseClicked
-                    // TODO add your handling code here:
-                    VentanaAdministradorTordavi va = new VentanaAdministradorTordavi();
-                    va.setVisible(true);
-                    this.dispose();
-                   
+              // TODO add your handling code here:
+              VentanaAdministradorTordavi va = new VentanaAdministradorTordavi();
+              va.setVisible(true);
+              this.dispose();
+
           }//GEN-LAST:event_lblRegresarMouseClicked
 
     private void panelSantiagoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelSantiagoMouseClicked
@@ -522,7 +534,7 @@ public class VentanaTransportesAdministrador extends javax.swing.JFrame {
         VentanaTransporte v = new VentanaTransporte(transportes.verTransporte("Santiago Express"));
         v.setVisible(true);
         this.dispose();
-        
+
     }//GEN-LAST:event_panelSantiagoMouseClicked
 
     private void panelTornadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelTornadoMouseClicked
@@ -552,6 +564,16 @@ public class VentanaTransportesAdministrador extends javax.swing.JFrame {
         v.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_panelOtrosMouseClicked
+
+    private void lblRegresarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblRegresarMouseEntered
+        // TODO add your handling code here:
+        lblRegresar.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+    }//GEN-LAST:event_lblRegresarMouseEntered
+
+    private void lblRegresarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblRegresarMouseExited
+        // TODO add your handling code here:
+        lblRegresar.setBorder(null);
+    }//GEN-LAST:event_lblRegresarMouseExited
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

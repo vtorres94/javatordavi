@@ -17,26 +17,36 @@ import java.util.logging.Logger;
  * @version 0.1
  */
 public class Transportes {
-    static ArrayList<Transporte> transportesDB = new ArrayList();
-    static ConexionDB conexion = new ConexionDB();
+    private ArrayList<String[]> transportesDB = new ArrayList();
+    private ConexionDB conexion = new ConexionDB();
     public Transportes(){
         actualizarTransportes();
     }
-    public static void actualizarTransportes(){
+    public void actualizarTransportes(){
         try {
             conexion.ejecutarConsulta("SELECT * FROM transportes");
             while(conexion.rs.next()){
-                transportesDB.add(new Transporte(conexion.rs.getInt("idtransporte"),conexion.rs.getString("nombre"),conexion.rs.getString("telefono"),conexion.rs.getString("direccion")));
+                String[] t = new String[]{
+                        String.valueOf(conexion.rs.getInt("idtransporte")),
+                        conexion.rs.getString("nombre"),
+                        conexion.rs.getString("telefono"),
+                        conexion.rs.getString("direccion")};
+                transportesDB.add(t);
             }
         } catch (SQLException ex) {
             Logger.getLogger(Transportes.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    public static boolean crearTransporte(Transporte transporte){
-        boolean consulta=false;
-        return consulta;
+    public boolean crearTransporte(Transporte transporte){
+        boolean instruccion=false;
+        instruccion = conexion.ejecutarInstruccion("INSERT INTO transportes "
+                + "(nombre, telefono, direccion)"
+                + " VALUES ('"+transporte.getNombre()+"',"
+                + "'"+transporte.getTelefono()+"',"
+                + "'"+transporte.getDireccion()+"')");
+        return instruccion;
     }
-    public static Transporte verTransporte(String nombreTransporte){
+    public Transporte verTransporte(String nombreTransporte){
         Transporte consulta = null;
         try {
             conexion.ejecutarConsulta("SELECT * FROM transportes WHERE nombre='"+nombreTransporte+"'");
@@ -48,7 +58,7 @@ public class Transportes {
         }
         return consulta;
     }
-    public static String getNombreTransporte(int idTransporte){
+    public String getTransporteByID(int idTransporte){
         String consulta = null;
         try {
             conexion.ejecutarConsulta("SELECT * FROM transportes WHERE idTransporte='"+idTransporte+"'");
@@ -60,15 +70,19 @@ public class Transportes {
         }
         return consulta;
     }
-    static boolean modificarTransporte(Transporte corrida){
+    public boolean modificarTransporte(Transporte transporte){
+        boolean consulta=false;
+        consulta=conexion.ejecutarInstruccion("UPDATE transportes SET "
+                + "nombre='"+transporte.getNombre()+"',"
+                + "telefono='"+transporte.getTelefono()+"',"
+                + "direccion='"+transporte.getDireccion()+" WHERE idTransporte='"+transporte.getIdTransporte()+"'");
+        return consulta;
+    }
+    public boolean eliminarTransporte(Transporte corrida){
         boolean consulta=false;
         return consulta;
     }
-    static boolean eliminarTransporte(Transporte corrida){
-        boolean consulta=false;
-        return consulta;
-    }
-    static ArrayList<Transporte> verTransportes(){
+    public ArrayList<String[]> getTransportes(){
         return transportesDB;
     }
     
