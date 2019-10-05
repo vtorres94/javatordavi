@@ -32,10 +32,11 @@ public class VentanaEditarTransporte extends javax.swing.JFrame {
         this.idTransporte=idTransporte;
         this.setLocationRelativeTo(null);
         transports = new Transportes();
-        transport = new Transporte(idTransporte,txtNombre.getText(),txtTelefono.getText(),txtDireccion.getText());
-        Imagen add = new Imagen(lblAgregarUsuario, "src/images/icons/iconAdd.png");
+        transport = transports.getTransporteByID(idTransporte);
+        Imagen add = new Imagen(lblAgregarUsuario, "src/images/icons/iconEdit.png");
         Imagen close = new Imagen(lblClose, "src/images/icons/iconClose.png");
         Imagen min = new Imagen(lblMinimizar, "src/images/icons/iconMinimizar.png");
+        System.out.println(transport.toString());
         txtNombre.setText(transport.getNombre());
         txtTelefono.setText(transport.getTelefono());
         txtDireccion.setText(transport.getDireccion());
@@ -76,7 +77,7 @@ public class VentanaEditarTransporte extends javax.swing.JFrame {
 
             lblIDUsuario.setFont(new java.awt.Font("Dialog", 0, 36)); // NOI18N
             lblIDUsuario.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-            lblIDUsuario.setText("REGISTRO DE TRANSPORTES");
+            lblIDUsuario.setText("EDICIÓN DE TRANSPORTES");
 
             jLabel2.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
             jLabel2.setText("Nombre:");
@@ -302,6 +303,10 @@ public class VentanaEditarTransporte extends javax.swing.JFrame {
             if (!txtDireccion.getText().equals("")) {
                 txtDireccion.setBorder(null);
                 if (!txtTelefono.getText().equals("")) {
+                    transport.setIdTransporte(idTransporte);
+                    transport.setNombre(txtNombre.getText());
+                    transport.setTelefono(txtTelefono.getText());
+                    transport.setDireccion(txtDireccion.getText());
                     if (transports.modificarTransporte(transport)) {
                         JOptionPane.showMessageDialog(this, "se ha ingresado el transporte!");
                         VentanaTransporte vua = new VentanaTransporte(transport);

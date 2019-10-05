@@ -7,18 +7,18 @@ package view.corridas;
 
 import controller.Corridas;
 import controller.Imagen;
-import controller.ResultSetTableModel;
 import controller.Tabla;
 import java.awt.Color;
-import java.sql.SQLException;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import view.VentanaAdministradorTordavi;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 /**
  *
- * @author Vladimir Torres 
+ * @author Vladimir Torres
  * @version 0.1
  */
 public class VentanaCorridasAdministrador extends javax.swing.JFrame {
@@ -27,21 +27,22 @@ public class VentanaCorridasAdministrador extends javax.swing.JFrame {
      * Creates new form VentanaCorridasAdministrador
      */
     private Corridas corridas;
+
     public VentanaCorridasAdministrador() {
         initComponents();
         this.setLocationRelativeTo(null);
-        Imagen m = new Imagen(labelLogo,"src/images/logoTordavi.png");
-        Imagen close = new Imagen(lblClose,"src/images/icons/iconClose.png");
-        Imagen min = new Imagen(lblMinimizar,"src/images/icons/iconMinimizar.png");
+        Imagen m = new Imagen(lblLogo, "src/images/logoTordavi.png");
+        Imagen close = new Imagen(lblClose, "src/images/icons/iconClose.png");
+        Imagen min = new Imagen(lblMinimizar, "src/images/icons/iconMinimizar.png");
         Imagen back = new Imagen(lblRegresar, "src/images/icons/iconRegresar.png");
         Imagen add = new Imagen(lblAgregarCorrida, "src/images/icons/iconAdd.png");
         Imagen delete = new Imagen(lblEliminarCorrida, "src/images/icons/iconDelete.png");
         Imagen update = new Imagen(lblEditarCorrida, "src/images/icons/iconUpdate.png");
         corridas = new Corridas();
-        String[] header = new String[]{"ID","Transporte","Origen","Destino","Fecha","Horario","Precio"};
-        DefaultTableModel modelo = Tabla.modeloTabla(Corridas.corridasDB,header);    
+        String[] header = new String[]{"ID","TRANSPORTE","SALIDA","ORIGEN","DESTINO","HORARIO","PRECIO"};
+        DefaultTableModel modelo = Tabla.modeloTabla(Corridas.corridasDB, header);
         tablaCorridasAdministrador.setModel(modelo);
-        
+
     }
 
     /**
@@ -54,18 +55,18 @@ public class VentanaCorridasAdministrador extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        labelLogo = new javax.swing.JLabel();
+        lblLogo = new javax.swing.JLabel();
         lblClose = new javax.swing.JLabel();
         lblMinimizar = new javax.swing.JLabel();
-        lblRegresar1 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
-        lblRegresar = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaCorridasAdministrador = new javax.swing.JTable();
         txtBusquedaCorrida = new javax.swing.JTextField();
         lblAgregarCorrida = new javax.swing.JLabel();
         lblEditarCorrida = new javax.swing.JLabel();
         lblEliminarCorrida = new javax.swing.JLabel();
+        lblActualizarCorridas = new javax.swing.JLabel();
+        lblRegresar = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -73,20 +74,15 @@ public class VentanaCorridasAdministrador extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        labelLogo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labelLogo.setMaximumSize(new java.awt.Dimension(300, 175));
-        labelLogo.setMinimumSize(new java.awt.Dimension(300, 175));
-        labelLogo.setPreferredSize(new java.awt.Dimension(300, 175));
+        lblLogo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblLogo.setMaximumSize(new java.awt.Dimension(300, 175));
+        lblLogo.setMinimumSize(new java.awt.Dimension(300, 175));
+        lblLogo.setPreferredSize(new java.awt.Dimension(300, 175));
 
         lblClose.setBackground(new java.awt.Color(255, 255, 255));
         lblClose.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         lblClose.setMaximumSize(new java.awt.Dimension(20, 20));
         lblClose.setMinimumSize(new java.awt.Dimension(20, 20));
-        lblClose.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseMoved(java.awt.event.MouseEvent evt) {
-                lblCloseMouseMoved(evt);
-            }
-        });
         lblClose.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblCloseMouseClicked(evt);
@@ -107,20 +103,8 @@ public class VentanaCorridasAdministrador extends javax.swing.JFrame {
             }
         });
 
-        lblRegresar1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblRegresar1MouseClicked(evt);
-            }
-        });
-
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setPreferredSize(new java.awt.Dimension(250, 150));
-
-        lblRegresar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblRegresarMouseClicked(evt);
-            }
-        });
 
         tablaCorridasAdministrador.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -141,30 +125,99 @@ public class VentanaCorridasAdministrador extends javax.swing.JFrame {
             }
         });
 
-        lblAgregarCorrida.setText("Agregar");
+        lblAgregarCorrida.setText("jLabel4");
+        lblAgregarCorrida.setMaximumSize(new java.awt.Dimension(35, 35));
+        lblAgregarCorrida.setMinimumSize(new java.awt.Dimension(35, 35));
+        lblAgregarCorrida.setPreferredSize(new java.awt.Dimension(35, 35));
+        lblAgregarCorrida.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblAgregarCorridaMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lblAgregarCorridaMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblAgregarCorridaMouseExited(evt);
+            }
+        });
 
-        lblEditarCorrida.setText("Editar");
+        lblEditarCorrida.setText("jLabel4");
+        lblEditarCorrida.setMaximumSize(new java.awt.Dimension(35, 35));
+        lblEditarCorrida.setMinimumSize(new java.awt.Dimension(35, 35));
+        lblEditarCorrida.setPreferredSize(new java.awt.Dimension(35, 35));
+        lblEditarCorrida.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblEditarCorridaMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lblEditarCorridaMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblEditarCorridaMouseExited(evt);
+            }
+        });
 
-        lblEliminarCorrida.setText("Eliminar");
+        lblEliminarCorrida.setText("jLabel4");
+        lblEliminarCorrida.setMaximumSize(new java.awt.Dimension(35, 35));
+        lblEliminarCorrida.setMinimumSize(new java.awt.Dimension(35, 35));
+        lblEliminarCorrida.setPreferredSize(new java.awt.Dimension(35, 35));
+        lblEliminarCorrida.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblEliminarCorridaMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lblEliminarCorridaMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblEliminarCorridaMouseExited(evt);
+            }
+        });
+
+        lblActualizarCorridas.setText("jLabel4");
+        lblActualizarCorridas.setMaximumSize(new java.awt.Dimension(35, 35));
+        lblActualizarCorridas.setMinimumSize(new java.awt.Dimension(35, 35));
+        lblActualizarCorridas.setPreferredSize(new java.awt.Dimension(35, 35));
+        lblActualizarCorridas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblActualizarCorridasMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lblActualizarCorridasMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblActualizarCorridasMouseExited(evt);
+            }
+        });
+
+        lblRegresar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblRegresarMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lblRegresarMouseEntered(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(962, 1040, Short.MAX_VALUE)
+                .addComponent(lblRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(txtBusquedaCorrida, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(lblEditarCorrida, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(lblEliminarCorrida, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(lblAgregarCorrida, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(lblRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1024, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtBusquedaCorrida, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jScrollPane1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblEditarCorrida, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblAgregarCorrida, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblEliminarCorrida, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblActualizarCorridas, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -172,14 +225,19 @@ public class VentanaCorridasAdministrador extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(txtBusquedaCorrida, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(lblRegresar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lblAgregarCorrida, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lblEditarCorrida, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lblEliminarCorrida, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(lblAgregarCorrida, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lblEditarCorrida, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lblEliminarCorrida, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lblActualizarCorridas, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 129, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -188,69 +246,53 @@ public class VentanaCorridasAdministrador extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 1041, Short.MAX_VALUE)
+                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 1096, Short.MAX_VALUE)
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(lblMinimizar, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblClose, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(22, 22, 22)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(labelLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblMinimizar, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(lblClose, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 926, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblRegresar1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGap(23, 23, 23)))
+                    .addGap(44, 44, 44)
+                    .addComponent(lblLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(784, Short.MAX_VALUE)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(149, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblClose, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblMinimizar, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 151, Short.MAX_VALUE)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 431, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(7, 7, 7)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(lblClose, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lblMinimizar, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(labelLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(377, 377, 377)
-                    .addComponent(lblRegresar1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(lblLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(480, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void lblCloseMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCloseMouseMoved
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lblCloseMouseMoved
-
     private void lblCloseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCloseMouseClicked
         // TODO add your handling code here:
         int dialog = JOptionPane.YES_NO_CANCEL_OPTION;
-        int result = JOptionPane.showConfirmDialog(null, "Desea salir?","Exit",dialog);
-        if(result==0){
+        int result = JOptionPane.showConfirmDialog(null, "Desea salir?", "Exit", dialog);
+        if (result == 0) {
             System.exit(0);
         }
     }//GEN-LAST:event_lblCloseMouseClicked
@@ -262,6 +304,7 @@ public class VentanaCorridasAdministrador extends javax.swing.JFrame {
 
     private void lblCloseMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCloseMouseExited
         // TODO add your handling code here:
+        lblClose.setBorder(null);
     }//GEN-LAST:event_lblCloseMouseExited
 
     private void lblMinimizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMinimizarMouseClicked
@@ -269,22 +312,82 @@ public class VentanaCorridasAdministrador extends javax.swing.JFrame {
         this.setState(VentanaAdministradorTordavi.ICONIFIED);
     }//GEN-LAST:event_lblMinimizarMouseClicked
 
-    private void lblRegresar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblRegresar1MouseClicked
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_lblRegresar1MouseClicked
-
     private void lblRegresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblRegresarMouseClicked
         // TODO add your handling code here:
         VentanaAdministradorTordavi va = new VentanaAdministradorTordavi();
         va.setVisible(true);
         this.dispose();
-        Corridas.corridasDB.clear();
     }//GEN-LAST:event_lblRegresarMouseClicked
 
     private void txtBusquedaCorridaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBusquedaCorridaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtBusquedaCorridaActionPerformed
+
+    private void lblActualizarCorridasMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblActualizarCorridasMouseExited
+        // TODO add your handling code here:
+        lblActualizarCorridas.setBorder(null);
+    }//GEN-LAST:event_lblActualizarCorridasMouseExited
+
+    private void lblActualizarCorridasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblActualizarCorridasMouseEntered
+        // TODO add your handling code here:
+        lblActualizarCorridas.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+    }//GEN-LAST:event_lblActualizarCorridasMouseEntered
+
+    private void lblActualizarCorridasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblActualizarCorridasMouseClicked
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_lblActualizarCorridasMouseClicked
+
+    private void lblEliminarCorridaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEliminarCorridaMouseExited
+        // TODO add your handling code here:
+        lblEliminarCorrida.setBorder(null);
+    }//GEN-LAST:event_lblEliminarCorridaMouseExited
+
+    private void lblEliminarCorridaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEliminarCorridaMouseEntered
+        // TODO add your handling code here:
+        lblEliminarCorrida.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+    }//GEN-LAST:event_lblEliminarCorridaMouseEntered
+
+    private void lblEliminarCorridaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEliminarCorridaMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lblEliminarCorridaMouseClicked
+
+    private void lblEditarCorridaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEditarCorridaMouseExited
+        // TODO add your handling code here:
+        lblEditarCorrida.setBorder(null);
+    }//GEN-LAST:event_lblEditarCorridaMouseExited
+
+    private void lblEditarCorridaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEditarCorridaMouseEntered
+        // TODO add your handling code here:
+        lblEditarCorrida.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+    }//GEN-LAST:event_lblEditarCorridaMouseEntered
+
+    private void lblEditarCorridaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEditarCorridaMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lblEditarCorridaMouseClicked
+
+    private void lblAgregarCorridaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAgregarCorridaMouseExited
+        // TODO add your handling code here:
+        lblAgregarCorrida.setBorder(null);
+    }//GEN-LAST:event_lblAgregarCorridaMouseExited
+
+    private void lblAgregarCorridaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAgregarCorridaMouseEntered
+        // TODO add your handling code here:
+        lblAgregarCorrida.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+    }//GEN-LAST:event_lblAgregarCorridaMouseEntered
+
+    private void lblRegresar1MouseClicked(java.awt.event.MouseEvent evt) {
+        // TODO add your handling code here:
+
+    }
+    private void lblAgregarCorridaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAgregarCorridaMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lblAgregarCorridaMouseClicked
+
+    private void lblRegresarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblRegresarMouseEntered
+        // TODO add your handling code here:
+        lblRegresar.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+    }//GEN-LAST:event_lblRegresarMouseEntered
 
     /**
      * @param args the command line arguments
@@ -325,14 +428,14 @@ public class VentanaCorridasAdministrador extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel labelLogo;
+    private javax.swing.JLabel lblActualizarCorridas;
     private javax.swing.JLabel lblAgregarCorrida;
     private javax.swing.JLabel lblClose;
     private javax.swing.JLabel lblEditarCorrida;
     private javax.swing.JLabel lblEliminarCorrida;
+    private javax.swing.JLabel lblLogo;
     private javax.swing.JLabel lblMinimizar;
     private javax.swing.JLabel lblRegresar;
-    private javax.swing.JLabel lblRegresar1;
     private javax.swing.JTable tablaCorridasAdministrador;
     private javax.swing.JTextField txtBusquedaCorrida;
     // End of variables declaration//GEN-END:variables

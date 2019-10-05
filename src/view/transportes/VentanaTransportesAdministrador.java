@@ -451,7 +451,7 @@ public class VentanaTransportesAdministrador extends javax.swing.JFrame {
 
           private void panelGuadianaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelGuadianaMouseClicked
               // TODO add your handling code here:
-              VentanaTransporte v = new VentanaTransporte(transportes.verTransporte("Guadiana Express"));
+              VentanaTransporte v = new VentanaTransporte(transportes.getTransporteByNombre("Guadiana Express"));
               v.setVisible(true);
               this.dispose();
           }//GEN-LAST:event_panelGuadianaMouseClicked
@@ -531,7 +531,7 @@ public class VentanaTransportesAdministrador extends javax.swing.JFrame {
 
     private void panelSantiagoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelSantiagoMouseClicked
         // TODO add your handling code here:
-        VentanaTransporte v = new VentanaTransporte(transportes.verTransporte("Santiago Express"));
+        VentanaTransporte v = new VentanaTransporte(transportes.getTransporteByNombre("Santiago Express"));
         v.setVisible(true);
         this.dispose();
 
@@ -539,21 +539,21 @@ public class VentanaTransportesAdministrador extends javax.swing.JFrame {
 
     private void panelTornadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelTornadoMouseClicked
         // TODO add your handling code here:
-        VentanaTransporte v = new VentanaTransporte(transportes.verTransporte("Tornado Bus"));
+        VentanaTransporte v = new VentanaTransporte(transportes.getTransporteByNombre("Tornado Bus"));
         v.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_panelTornadoMouseClicked
 
     private void panelZacatecanoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelZacatecanoMouseClicked
         // TODO add your handling code here:
-        VentanaTransporte v = new VentanaTransporte(transportes.verTransporte("Zacatecano"));
+        VentanaTransporte v = new VentanaTransporte(transportes.getTransporteByNombre("Zacatecano"));
         v.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_panelZacatecanoMouseClicked
 
     private void panelMisionerosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelMisionerosMouseClicked
         // TODO add your handling code here:
-        VentanaTransporte v = new VentanaTransporte(transportes.verTransporte("Misioneros"));
+        VentanaTransporte v = new VentanaTransporte(transportes.getTransporteByNombre("Misioneros"));
         v.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_panelMisionerosMouseClicked

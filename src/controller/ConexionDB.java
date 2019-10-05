@@ -1,4 +1,5 @@
 package controller;
+import com.mysql.jdbc.CommunicationsException;
 import com.mysql.jdbc.exceptions.MySQLIntegrityConstraintViolationException;
 import java.sql.*;
 import java.util.logging.Level;
@@ -20,7 +21,7 @@ public class ConexionDB {
     Statement stm;
     ResultSet rs;
     
-    public Connection conectar(){
+    public void conectar(){
         try{
             Class.forName(controlador);
             cnx = DriverManager.getConnection("jdbc:mysql://localhost/tordaviinternational", "root", "");
@@ -31,9 +32,8 @@ public class ConexionDB {
         }catch (ClassNotFoundException ex) {
             System.err.println("No se encontro el conector "+ex.getMessage());
         }
-        return cnx;
     }
-    public boolean isConnected(){
+    public static boolean isConnected(){
         boolean conectado = false;
         if (cnx == null){
             try{
@@ -50,7 +50,7 @@ public class ConexionDB {
             }
         }else{
             try {
-                if(cnx.isValid(0)){
+                if(cnx.isValid(1)){
                     conectado = true;
                 }else{
                     cnx=null;
@@ -80,9 +80,11 @@ public class ConexionDB {
        conectar();
        try {
            rs = stm.executeQuery(sql);
-       } catch (SQLException ex) {
-           Logger.getLogger(ConexionDB.class.getName()).log(Level.SEVERE, null, ex);
-       }
+       }catch (CommunicationsException ex) {
+            System.err.println("Se perdió la conexión "+ex.getMessage());
+        }catch (SQLException ex) {
+            System.err.println("No se pudo conectar "+ex.getMessage());
+        }
        return rs;
    }
    

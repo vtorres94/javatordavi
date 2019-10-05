@@ -22,6 +22,7 @@ public class Corridas {
     public static ArrayList<String[]> corridasDB = new ArrayList<>();
     private Transportes t;
     public Corridas(){
+        t=new Transportes();
         actualizarCorridas();
     }
     public static boolean crearCorrida(Corrida corrida){
@@ -48,9 +49,10 @@ public class Corridas {
         try {
             conexion.ejecutarConsulta("SELECT * FROM corridas");
             while(conexion.rs.next()){
+                System.out.println(conexion.rs.getInt("idTransporte"));
                 String[] c = new String[]{
                     String.valueOf(conexion.rs.getInt("idCorrida")),
-                    t.getTransporteByID(conexion.rs.getInt("idTransporte")),//Tal vez exista error ya que no hemos inicializado la variable t
+                    t.getNombreByID(conexion.rs.getInt("idTransporte")),//Tal vez exista error ya que no hemos inicializado la variable t
                     conexion.rs.getString("fechaSalida"),
                     conexion.rs.getString("origen"),
                     conexion.rs.getString("destino"),

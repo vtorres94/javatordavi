@@ -14,7 +14,6 @@ import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import view.VentanaAdministradorTordavi;
-import view.usuarios.VentanaAgregarUsuario;
 
 /**
  *
@@ -28,7 +27,7 @@ public class VentanaTransporte extends javax.swing.JFrame {
      */
     private Transporte transport;
     private Transportes transports = new Transportes();
-    private String[] header = {"ID","Nombre","Dirección","Teléfono"};
+    private String[] header = {"ID","NOMBRE","TELÉFONO","DIRECCIÓN"};
     public VentanaTransporte() {
         initComponents();
         actualizarTabla();
@@ -42,10 +41,14 @@ public class VentanaTransporte extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         this.transport = transporte;
         cargarImagenes();
+        try{
         lblNombreTransporte.setText(transporte.getNombre());
         lblTelefonoTransporte.setText(transporte.getTelefono());
         lblDireccionTransporte.setText(transporte.getDireccion());
         lblIDTransporte.setText(String.valueOf(transporte.getIdTransporte()));
+        }catch(NullPointerException npe){
+            System.err.println(npe.getMessage());
+        }
     }
 
     public void actualizarTabla() {
@@ -413,6 +416,7 @@ public class VentanaTransporte extends javax.swing.JFrame {
 
     private void lblCloseMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCloseMouseExited
         // TODO add your handling code here:
+        lblClose.setBorder(null);
     }//GEN-LAST:event_lblCloseMouseExited
 
     private void lblMinimizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMinimizarMouseClicked
@@ -451,12 +455,26 @@ public class VentanaTransporte extends javax.swing.JFrame {
 
     private void lblEliminarTransporteMouseClicked(java.awt.event.MouseEvent evt) {
         // TODO add your handling code here:
-
+        int selection = tablaTransportesAdministrador.getSelectedRow();
+        if(selection>=0){
+            int dialog = JOptionPane.YES_NO_CANCEL_OPTION;
+            int result = JOptionPane.showConfirmDialog(null, "Desea eliminar al transporte: "+tablaTransportesAdministrador.getValueAt(selection, 1).toString()+" con ID:"+tablaTransportesAdministrador.getValueAt(selection, 0).toString()+"", "Eliminar", dialog);
+            if (result == 0) {
+                if(transports.eliminarTransporte(Integer.parseInt(tablaTransportesAdministrador.getValueAt(selection, 0).toString()))){
+                    JOptionPane.showMessageDialog(this,"Se ha eliminado con exito!");
+                    ((DefaultTableModel)tablaTransportesAdministrador.getModel()).removeRow(selection);
+                    
+                }else{
+                    JOptionPane.showMessageDialog(this,"NO se ha eliminado");
+                }
+            }
+        }
     }
 
     private void lblActualizarTransportesMouseClicked(java.awt.event.MouseEvent evt) {
         // TODO add your handling code here:
-
+        transports.actualizarTransportes();
+        actualizarTabla();
     }
 
     private void lblAgregarTransporteMouseEntered(java.awt.event.MouseEvent evt) {

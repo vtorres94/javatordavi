@@ -15,7 +15,8 @@ import view.VentanaAdministradorTordavi;
 
 /**
  *
- * @author Vladimir Torres
+ * @author Vladimir Torres 
+ * @version 0.1
  */
 public class VentanaUsuariosAdministrador extends javax.swing.JFrame {
 
@@ -36,32 +37,7 @@ public class VentanaUsuariosAdministrador extends javax.swing.JFrame {
         DefaultTableModel model = Tabla.modeloTabla(users.getUsuarios(), header);
         tablaUsuariosAdministrador.setModel(model);
     }
-    /*Result set table model*/
-
-    public void llenarListaUsuarios() {
-
-    }
-
-    /**
-     * Este metodo contiene errores de logica ya que los index de los elementos
-     * cambia cada que buscamos
-     *
-     * @param busqueda
-     */
-    public void llenarListaUsuarios(String busqueda) {
-        
-        /*
-         DefaultListModel<String> modeloLista = new DefaultListModel();
-         for(int i=0;i<users.getUsuarios().size();i++){
-         Usuario u = users.getUsuarios().get(i);
-         if(u.toString().contains(busqueda)){
-         modeloLista.add(i,u.toString());
-         }
-         }
-         listaUsuarios.setModel(modeloLista);
-         */
-    }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

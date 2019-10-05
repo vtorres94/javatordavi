@@ -13,77 +13,106 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author Vladimir Torres 
+ * @author Vladimir Torres
  * @version 0.1
  */
 public class Transportes {
+
     private ArrayList<String[]> transportesDB = new ArrayList();
     private ConexionDB conexion = new ConexionDB();
-    public Transportes(){
+
+    public Transportes() {
         actualizarTransportes();
     }
-    public void actualizarTransportes(){
-        try {
-            conexion.ejecutarConsulta("SELECT * FROM transportes");
-            while(conexion.rs.next()){
-                String[] t = new String[]{
+
+    public void actualizarTransportes() {
+        if (ConexionDB.isConnected()) {
+            transportesDB.clear();
+            try {
+                conexion.ejecutarConsulta("SELECT * FROM transportes");
+                while (conexion.rs.next()) {
+                    String[] t = new String[]{
                         String.valueOf(conexion.rs.getInt("idtransporte")),
                         conexion.rs.getString("nombre"),
                         conexion.rs.getString("telefono"),
                         conexion.rs.getString("direccion")};
-                transportesDB.add(t);
+                    transportesDB.add(t);
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(Transportes.class.getName()).log(Level.SEVERE, null, ex);
             }
-        } catch (SQLException ex) {
-            Logger.getLogger(Transportes.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    public boolean crearTransporte(Transporte transporte){
-        boolean instruccion=false;
+
+    public boolean crearTransporte(Transporte transporte) {
+        boolean instruccion = false;
         instruccion = conexion.ejecutarInstruccion("INSERT INTO transportes "
                 + "(nombre, telefono, direccion)"
-                + " VALUES ('"+transporte.getNombre()+"',"
-                + "'"+transporte.getTelefono()+"',"
-                + "'"+transporte.getDireccion()+"')");
+                + " VALUES ('" + transporte.getNombre() + "',"
+                + "'" + transporte.getTelefono() + "',"
+                + "'" + transporte.getDireccion() + "')");
         return instruccion;
     }
-    public Transporte verTransporte(String nombreTransporte){
+
+    public Transporte getTransporteByNombre(String nombreTransporte) {
+        Transporte consulta = null;
+        if (ConexionDB.isConnected()) {    
+            try {
+                conexion.ejecutarConsulta("SELECT * FROM transportes WHERE nombre='" + nombreTransporte + "'");
+                while (conexion.rs.next()) {
+                    consulta = new Transporte(conexion.rs.getInt("idtransporte"), conexion.rs.getString("nombre"), conexion.rs.getString("telefono"), conexion.rs.getString("direccion"));
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(Transportes.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return consulta;
+    }
+
+    public Transporte getTransporteByID(int idTransporte) {
         Transporte consulta = null;
         try {
-            conexion.ejecutarConsulta("SELECT * FROM transportes WHERE nombre='"+nombreTransporte+"'");
-            while(conexion.rs.next()){
-                consulta = new Transporte(conexion.rs.getInt("idtransporte"),conexion.rs.getString("nombre"),conexion.rs.getString("telefono"),conexion.rs.getString("direccion"));
+            conexion.ejecutarConsulta("SELECT * FROM transportes WHERE idTransporte='" + idTransporte + "'");
+            while (conexion.rs.next()) {
+                consulta = new Transporte(idTransporte, conexion.rs.getString("nombre"), conexion.rs.getString("telefono"), conexion.rs.getString("direccion"));
             }
         } catch (SQLException ex) {
             Logger.getLogger(Transportes.class.getName()).log(Level.SEVERE, null, ex);
         }
         return consulta;
     }
-    public String getTransporteByID(int idTransporte){
+
+    public String getNombreByID(int idTransporte) {
         String consulta = null;
         try {
-            conexion.ejecutarConsulta("SELECT * FROM transportes WHERE idTransporte='"+idTransporte+"'");
-            while(conexion.rs.next()){
+            conexion.ejecutarConsulta("SELECT * FROM transportes WHERE idTransporte='" + idTransporte + "'");
+            while (conexion.rs.next()) {
                 consulta = conexion.rs.getString("nombre");
+                System.out.println(consulta);
             }
         } catch (SQLException ex) {
             Logger.getLogger(Transportes.class.getName()).log(Level.SEVERE, null, ex);
         }
         return consulta;
     }
-    public boolean modificarTransporte(Transporte transporte){
-        boolean consulta=false;
-        consulta=conexion.ejecutarInstruccion("UPDATE transportes SET "
-                + "nombre='"+transporte.getNombre()+"',"
-                + "telefono='"+transporte.getTelefono()+"',"
-                + "direccion='"+transporte.getDireccion()+" WHERE idTransporte='"+transporte.getIdTransporte()+"'");
+
+    public boolean modificarTransporte(Transporte transporte) {
+        boolean consulta = false;
+        consulta = conexion.ejecutarInstruccion("UPDATE transportes SET "
+                + "nombre='" + transporte.getNombre() + "',"
+                + "telefono='" + transporte.getTelefono() + "',"
+                + "direccion='" + transporte.getDireccion() + "' WHERE idTransporte='" + transporte.getIdTransporte() + "'");
         return consulta;
     }
-    public boolean eliminarTransporte(Transporte corrida){
-        boolean consulta=false;
+
+    public boolean eliminarTransporte(int idTransporte) {
+        boolean consulta = false;
+        consulta = conexion.ejecutarInstruccion("DELETE FROM transportes WHERE idTransporte='" + idTransporte + "'");
         return consulta;
     }
-    public ArrayList<String[]> getTransportes(){
+
+    public ArrayList<String[]> getTransportes() {
         return transportesDB;
     }
-    
+
 }

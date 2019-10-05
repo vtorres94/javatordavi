@@ -85,5 +85,7 @@ public class Transporte {
     public void setDireccion(String direccion) {
         this.direccion =direccion;
     }
-    
+    public String toString(){
+        return "ID: "+idTransporte+" Nombre: "+nombre+" Teléfono: "+telefono+" Dirección: "+direccion;
+    }
 }
