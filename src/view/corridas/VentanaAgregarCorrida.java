@@ -124,6 +124,11 @@ public class VentanaAgregarCorrida extends javax.swing.JFrame {
 
         comboPuestos.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         comboPuestos.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Puestos", "Administrador", "Gerente", "Ventas" }));
+        comboPuestos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboPuestosActionPerformed(evt);
+            }
+        });
 
         lblClose.setBackground(new java.awt.Color(255, 255, 255));
         lblClose.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -398,6 +403,10 @@ public class VentanaAgregarCorrida extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.setState(VentanaAdministradorTordavi.ICONIFIED);
     }//GEN-LAST:event_lblMinimizarMouseClicked
+
+    private void comboPuestosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboPuestosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboPuestosActionPerformed
 
     /**
      * @param args the command line arguments

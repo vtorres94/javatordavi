@@ -7,7 +7,7 @@ package controller;
  */
 /**
  *
- * @author Vladimir Torres 
+ * @author Vladimir Torres
  * @version 0.1
  */
 import java.awt.Graphics;
@@ -18,21 +18,24 @@ import javax.swing.JPanel;
 
 public class Imagen extends JPanel {
 
-          private Image imagen;
-          public   Imagen(JLabel label, String source){
-                    this.setSize(label.getWidth(),label.getHeight());
-                    Image img= new ImageIcon(source).getImage();
-                    ImageIcon img2=new ImageIcon(img.getScaledInstance(this.getWidth(), this.getHeight(), Image.SCALE_SMOOTH));
-                    label.setIcon(img2);
-          }
-          @Override
-          public void paint(Graphics g) {
-                    g.drawImage(imagen, 0, 0, this.getWidth(), this.getHeight(), null);
-          }
+    private Image imagen;
 
-          public void setImagen(String source) {
-                    if (source != null) {
-                              this.imagen = new ImageIcon(getClass().getResource(source)).getImage();
-                    }
-          }
+    public Imagen(JLabel label, String source) {
+        this.setSize(label.getWidth(), label.getHeight());
+        Image img = new ImageIcon(source).getImage();
+        ImageIcon img2 = new ImageIcon(img.getScaledInstance(this.getWidth(), this.getHeight(), Image.SCALE_SMOOTH));
+        label.setIcon(img2);
+        
+    }
+
+    @Override
+    public void paint(Graphics g) {
+        g.drawImage(imagen, 0, 0, this.getWidth(), this.getHeight(), null);
+    }
+
+    public void setImagen(String source) {
+        if (source != null) {
+            this.imagen = new ImageIcon(getClass().getResource(source)).getImage();
+        }
+    }
 }

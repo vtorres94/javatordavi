@@ -85,7 +85,6 @@ public class LoginTordavi extends javax.swing.JFrame {
         setBackground(new java.awt.Color(255, 255, 255));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setUndecorated(true);
-        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel2.setBackground(new java.awt.Color(0, 0, 0));
@@ -125,6 +124,7 @@ public class LoginTordavi extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel1.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
 
         txtUsuario.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtUsuario.setText("Usuario");

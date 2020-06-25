@@ -110,7 +110,7 @@ public class Usuarios {
         try {
             conexion.ejecutarConsulta("SELECT * FROM usuarios WHERE usuario='" + user + "' && password='" + password + "'");
             while (conexion.rs.next()) {
-                System.out.println("UsuarioDB: " + conexion.rs.getString("usuario") + " PassDB: " + conexion.rs.getString("password"));
+                //System.out.println("UsuarioDB: " + conexion.rs.getString("usuario") + " PassDB: " + conexion.rs.getString("password"));
                 consulta = true;
             }
         } catch (SQLException ex) {

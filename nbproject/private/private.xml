@@ -2,19 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/E:/Miro/Documentos/NetBeansProjects/TordaviInternational/src/controller/Usuarios.java</file>
-            <file>file:/E:/Miro/Documentos/NetBeansProjects/TordaviInternational/src/view/transportes/VentanaEditarTransporte.java</file>
-            <file>file:/E:/Miro/Documentos/NetBeansProjects/TordaviInternational/src/view/transportes/VentanaTransporte.java</file>
-            <file>file:/E:/Miro/Documentos/NetBeansProjects/TordaviInternational/src/view/transportes/VentanaAgregarTransporte.java</file>
-            <file>file:/E:/Miro/Documentos/NetBeansProjects/TordaviInternational/src/view/transportes/VentanaTransportesAdministrador.java</file>
-            <file>file:/E:/Miro/Documentos/NetBeansProjects/TordaviInternational/src/controller/Transportes.java</file>
-            <file>file:/E:/Miro/Documentos/NetBeansProjects/TordaviInternational/src/view/LoginTordavi.java</file>
-            <file>file:/E:/Miro/Documentos/NetBeansProjects/TordaviInternational/src/controller/ConexionDB.java</file>
-            <file>file:/E:/Miro/Documentos/NetBeansProjects/TordaviInternational/src/classes/Cliente.java</file>
-            <file>file:/E:/Miro/Documentos/NetBeansProjects/TordaviInternational/src/controller/Clientes.java</file>
-            <file>file:/E:/Miro/Documentos/NetBeansProjects/TordaviInternational/src/view/corridas/VentanaCorridasAdministrador.java</file>
-            <file>file:/E:/Miro/Documentos/NetBeansProjects/TordaviInternational/src/view/usuarios/VentanaUsuariosAdministrador.java</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>

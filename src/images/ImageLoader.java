@@ -12,5 +12,6 @@ package images;
 public class ImageLoader {
     public ImageLoader(){
         super();
+        
     }
 }
